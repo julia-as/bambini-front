@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Form, NgForm } from '@angular/forms';
+import { Child } from '../child.model';
 
 @Component({
   selector: 'app-new-child',
@@ -8,18 +9,18 @@ import { Form, NgForm } from '@angular/forms';
 })
 export class NewChildComponent implements OnInit {
 
-  firstName: String = "Hello";
-  lastName: String = "World";
   @ViewChild('f') newChildForm: NgForm;
-
+  genders = ['female', 'male'];
+  child: Child;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onSubmit(f: NgForm) {
-    console.dir(f);
-    // this.firstName = f.form.;
-
+  onSubmit(form: NgForm) {
+    this.child = new Child(form.value.childData.lastName,
+      form.value.childData.firstName,
+      form.value.childData.dob, "imagePath");
+      console.log("new child:" + this.child.toString());
   }
 }
