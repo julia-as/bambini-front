@@ -1,20 +1,31 @@
 <div class="row">
 	<div class="col-xs-12">
-		<img src="" alt="" class="img-responsive">
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12">
 		<h4 class="list-group-item-heading">{{child.firstName}} {{child.lastName}}</h4>
 	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12">
-		<div class="btn-group">
-			<button type="button" 
-			class="btn btn-primary dropdown-toggle">
-			Manage Child
-		</button>
+	<a href="#" class="list-group-item clearfix">
+		<div class="pull-left">
+			<h4 class="list-group-item-heading">{{child.firstName}} {{child.lastName}}</h4>
+			<p class="list-group-item-text">
+				{{child.dob}} <br>
+				{{child.email}}<br>
+				{{child.phone}} <br>
+				{{child.street}} <br>
+				{{child.zip}} {{child.city}} <br>
+				{{child.gender}}
+			</p>
+			<span class="pull-right">
+				<img [src]="child.imagePath" alt="{{child.firstName}} {{child.lastName}}" class="img-responsive"
+					style="max-height: 50px;">
+			</span>
+		</div>
+	</a>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle">
+					Manage Child
+				</button>
+			</div>
 		</div>
 	</div>
-</div>

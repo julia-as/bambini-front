@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Child } from '../child.model';
+import { ChildService } from '../../shared/child.service';
 
 @Component({
   selector: 'app-child-list',
   templateUrl: './child-list.component.html',
-  styleUrls: ['./child-list.component.css']
+  styleUrls: ['./child-list.component.css'],
+  providers: [ChildService]
 })
 export class ChildListComponent implements OnInit {
 
    public showInputField: Boolean = false;
-   children: Child[] = [new Child("Herzog", "Greta", new Date(1-1-2019), "../../assets/puppy1.jpg"), 
-   new Child("Baerbock", "Lasse", new Date(3-4-2020), "../../../assets/crossfit.jpg")];
-
-  constructor() { }
+   children: Child[] = [];
+   
+  constructor(private childService: ChildService) { }
 
   ngOnInit(): void {
+    this.children = this.childService.children;
   }
+
 
     onNewChild() {
     this.showInputField = true;

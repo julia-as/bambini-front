@@ -10,40 +10,26 @@
 </p> -->
 <div class="row">
 	<div class="col-xs-12">
-		<button class="btn btn-success" (click)="onNewChild()">New Child</button>
+		<button class="btn btn-success" routerLink="/newChild">New Child</button>
 	</div>
 </div>
-
+<p *ngIf="showInputField">
+	<app-new-child></app-new-child>
+</p>
 <h4>Children in this group are:</h4>
 <div *ngFor="let child of children">
 	<div class="row">
 		<div class="col-xs-12">
-			<a href="#" class="list-group-item clearfix">
+			<a class="list-group-item clearfix" routerLink="/children/child.id">
 				<div class="pull-left">
 					<h4 class="list-group-item-heading">{{child.firstName}} {{child.lastName}}</h4>
-					<p class="list-group-item-text">
-						{{child.dob}} <br>
-						{{child.email}}<br>
-						{{child.phone}} <br>
-						{{child.street}} <br>
-						{{child.zip}} {{child.city}} <br>
-						{{child.gender}}
-					</p>
-					<!-- <app-child-detail></app-child-detail> -->
 					<span class="pull-right">
-					<img 
-					[src]="child.imagePath"
-					alt="{{child.firstName}} {{child.lastName}}" 
-					class="img-responsive" 
-					style="max-height: 50px;">
+						<img [src]="child.imagePath" alt="{{child.firstName}} {{child.lastName}}" class="img-responsive"
+							style="max-height: 50px;">
 					</span>
 				</div>
-				
+
 			</a>
 		</div>
 	</div>
 </div>
-
-<p *ngIf="showInputField">
-	<app-new-child></app-new-child>
-</p>
