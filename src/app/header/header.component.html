@@ -1,84 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a routerLink="/" class="navbar-brand">Bambini App</a>
-
- <!-- <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">Home</a></li>
-        <li role="presentation"><a routerLink="/children">All Children</a></li>
-        <li role="presentation"><a routerLink="/children">Hasen</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-    </div>
-  </div> -->
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" routerLink="/children">All Children</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdown" role="button"
-							data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Group
-						</a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" routerLink="/children">Groupname here</a>
-							<div class="dropdown-divider"></div>
-						</div>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" routerLink="/newChild">New Child</a>
-					</li>
-				</ul>
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
-			</div>
-		</div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<a class="navbar-brand" routerLink="/">Bambini App</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active">
+				<a class="nav-link" routerLink="/">Home<span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" routerLink="/children">All Children</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdown" role="button"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Group
+				</a>
+				<div class="dropdown-menu" name="groups" aria-labelledby="navbarDropdown">
+					<div *ngFor="let group of groups">
+						<a class="dropdown-item" routerLink="/children">{{group}}</a>
+					</div>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" routerLink="/newChild">New Child</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
 	</div>
 </nav>
-
-
-
-
-
-<!-- </div>
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">All Groups</a></li>
-				<li><a href="#">Reports</a></li>
-			<!-- </ul> -->
-<!-- <ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" role="button">Manage
-						<span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="#">Save data</a></li>
-						<li><a href="#">Fetch data</a></li>
-					</ul>
-				</li>
-			</ul>
-			</ul>
-		</div> -->
-<!-- </div> -->
-<!-- </nav> -->

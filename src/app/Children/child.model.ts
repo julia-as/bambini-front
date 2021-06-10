@@ -46,7 +46,7 @@ export class Child {
 	}
 
 	toString() {
-		console.log("ID: " + this.id + "\n" +
+		return ("ID: " + this.id + "\n" +
 			"Last name: " + this.lastName + "\n" +
 			"First name: " + this.firstName + "\n" +
 			"Email: " + this.email + "\n" +
@@ -55,6 +55,7 @@ export class Child {
 			"City: " + this.city + "\n" +
 			"Phone: " + this.phone + "\n" +
 			"DoB: " + this.dob + "\n" +
-			"Gender: " + this.gender);
+			"Gender: " + this.gender + "\n" +
+			"Group: " + this.group);
 	}
 }

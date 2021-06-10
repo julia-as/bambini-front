@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 // import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NewChildComponent } from './Children/new-child/new-child.component';
@@ -16,11 +16,11 @@ import { ChildService } from './shared/child.service';
 import { LoggingService } from './shared/logging.service';
 import { GroupService } from './shared/group.service';
 import { Child } from './Children/child.model';
-import { from } from 'rxjs';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // import { ChildServiceComponent } from './Children/child-service/child-service.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
+  { path: '', redirectTo: 'children', pathMatch: 'full' },
   { path: 'children', component: ChildListComponent },
   { path: 'children/:id', component: ChildDetailComponent },
   // { path: 'groups/:groupName', component: ListByGroupComponent },
@@ -43,7 +43,8 @@ const appRoutes: Routes = [
     FormsModule,
     NgbModule,
     RouterModule.forRoot(appRoutes),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MDBBootstrapModule.forRoot()
     // HttpClientModule
   ],
   providers: [

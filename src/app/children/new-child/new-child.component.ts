@@ -15,7 +15,8 @@ export class NewChildComponent implements OnInit {
 
   @ViewChild('f') newChildForm: NgForm;
   genders = ['female', 'male'];
-  @ViewChild('newChild') newChild: any;
+  // @ViewChild('newChild') newChild: any;
+  newChild: any;
   submitted: Boolean = false;
   groups = [];
 
@@ -23,12 +24,14 @@ export class NewChildComponent implements OnInit {
     for (let group of groupService.groups) {
       this.groups.push(group);
     }
-  }
-
-  ngOnInit(): void {
     this.newChild = {};
   }
 
+  ngOnInit(): void {
+    // this.newChild = {};
+  }
+
+  // TODO: get chosen group value into NgForm
   onSubmit(form: NgForm) {
     this.newChild = new Child(
       this.generateNewId(),
@@ -41,7 +44,7 @@ export class NewChildComponent implements OnInit {
       form.value.childData.phone,
       form.value.childData.dob,
       form.value.childData.gender,
-      form.value.childData.group,
+      form.value.group,
       "imagePath");
     this.childService.addChild(this.newChild);
     console.log("new child:" + this.newChild.toString());
