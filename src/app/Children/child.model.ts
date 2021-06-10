@@ -1,8 +1,13 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
 export class Child {
 
 	public id: number = 1;
-	public firstName: string = "Hello";
 	public lastName: string = "World";
+	public firstName: string = "Hello";
 	public email: string = "hello@world.org";
 	public street: string = "lifesaver street";
 	public zip: number;
@@ -13,11 +18,30 @@ export class Child {
 	public group: string;
 	public imagePath: string;
 
-	constructor(id: number, lastName: string, firstName: string, dob: Date, imagePath: string) {
+	constructor(
+		id: number,
+		lastName: string,
+		firstName: string,
+		email?: string,
+		street?: string,
+		zip?: number,
+		city?: string,
+		phone?: string,
+		dob?: Date,
+		gender?: string,
+		group?: string,
+		imagePath?: string,) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
+		this.email = email;
+		this.street = street;
+		this.zip = zip;
+		this.city = city;
+		this.phone = phone;
 		this.dob = dob;
+		this.gender = gender;
+		this.group = group;
 		this.imagePath = imagePath;
 	}
 

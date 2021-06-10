@@ -1,3 +1,5 @@
+// Manages kita groups and provides list of existing groups.
+
 export class GroupService {
 	
 	groups = ["Hasen", "Igel", "Fuechse"];

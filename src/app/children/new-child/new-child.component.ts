@@ -1,33 +1,51 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Form, NgForm, FormArray } from '@angular/forms';
 import { Child } from '../child.model';
 import { ChildService } from '../../shared/child.service';
+import { GroupService } from 'src/app/shared/group.service';
 
 
 @Component({
   selector: 'app-new-child',
   templateUrl: './new-child.component.html',
-  styleUrls: ['./new-child.component.css']
+  styleUrls: ['./new-child.component.css'],
+  providers: [ChildService, GroupService, Child]
 })
 export class NewChildComponent implements OnInit {
 
   @ViewChild('f') newChildForm: NgForm;
   genders = ['female', 'male'];
-  child: Child;
+  @ViewChild('newChild') newChild: any;
+  submitted: Boolean = false;
+  groups = [];
 
-  constructor(private childService: ChildService) { }
+  constructor(private childService: ChildService, private groupService: GroupService) {
+    for (let group of groupService.groups) {
+      this.groups.push(group);
+    }
+  }
 
   ngOnInit(): void {
+    this.newChild = {};
   }
 
   onSubmit(form: NgForm) {
-    this.child = new Child(
+    this.newChild = new Child(
       this.generateNewId(),
-      form.value.childData.lastName,
       form.value.childData.firstName,
-      form.value.childData.dob, "imagePath");
-    this.childService.addChild(this.child);
-    console.log("new child:" + this.child.toString());
+      form.value.childData.lastName,
+      form.value.childData.email,
+      form.value.childData.street,
+      form.value.childData.zip,
+      form.value.childData.city,
+      form.value.childData.phone,
+      form.value.childData.dob,
+      form.value.childData.gender,
+      form.value.childData.group,
+      "imagePath");
+    this.childService.addChild(this.newChild);
+    console.log("new child:" + this.newChild.toString());
+    this.submitted = true;
   }
 
   closeNewChildView() {

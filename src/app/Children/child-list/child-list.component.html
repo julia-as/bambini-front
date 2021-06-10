@@ -8,14 +8,6 @@
 	{{zip}} {{city}} <br>
 	{{gender}} <br>
 </p> -->
-<div class="row">
-	<div class="col-xs-12">
-		<button class="btn btn-success" routerLink="/newChild">New Child</button>
-	</div>
-</div>
-<p *ngIf="showInputField">
-	<app-new-child></app-new-child>
-</p>
 <h4>Children in this group are:</h4>
 <div *ngFor="let child of children">
 	<div class="row">

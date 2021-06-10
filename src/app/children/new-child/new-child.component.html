@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+<form (ngSubmit)="onSubmit(f)" #f="ngForm" *ngIf="newChild">
 	<div id="child-data" ngModelGroup="childData" #childData="ngModelGroup">
 		<div class="form-group">
 			<label for="firstName">Firt name</label>
@@ -37,7 +37,22 @@
 				{{gender}}
 			</label>
 		</div>
+		<div>
+			<select class="custom-select" formControlName="groups">
+				<option value="" formControlNamedisabled selected>Choose group</option>
+				<option *ngFor="let group of groups" name="group" ngModel [value]="group.value">{{group}}</option>
+			</select>
+		</div>
+		<!-- <div class="radio" *ngFor="let group of groups">
+			<label>
+				<input type="radio" name="group" ngModel [value]="group" required>
+				{{gender}}
+			</label>
+		</div> -->
 	</div>
 	<button class="btn btn-primary" type="submit">Save</button>
-	<button class="btn btn-stroked-button" routerLink="/children">Cancel</button>
+	<button class="btn btn-stroked-button" routerLink="/">Cancel</button>
 </form>
+<p *ngIf="submitted">
+	<app-new-child-detail></app-new-child-detail>
+</p>

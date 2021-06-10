@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Child } from '../child.model';
+import { ChildService } from 'src/app/shared/child.service';
 
 @Component({
   selector: 'app-child-detail',
@@ -10,7 +11,7 @@ export class ChildDetailComponent implements OnInit {
 
   child: Child;
 
-  constructor() { }
+  constructor(private childService: ChildService) { }
 
   ngOnInit(): void {
   }
