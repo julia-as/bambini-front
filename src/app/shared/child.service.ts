@@ -9,35 +9,35 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ChildService {
 
-	url = 'http://localhost:8080/';
+	url = 'http://localhost:8080';
 
-	children: Child[] = [
-		new Child(
-			2,
-			"Herzog",
-			"Greta",
-			"5@ScopedCredentialInfo.dsf",
-			"Hausstrasse 6",
-			45632,
-			"Hausenhasen",
-			"+49121235454",
-			new Date(3 - 7 - 2020),
-			"female",
-			"Hasen",
-			"../../assets/puppy1.jpg"),
-		new Child(
-			3,
-			"Baerbock",
-			"Lasse",
-			"1@ScopedCredentialInfo.dsf",
-			"Hausstrasse 2",
-			12345,
-			"Hausenhasen",
-			"+491235476874",
-			new Date(3 - 4 - 2020),
-			"male",
-			"Igel",
-			"../../../assets/crossfit.jpg")];
+	// children: Child[] = [
+	// 	new Child(
+	// 		2,
+	// 		"Herzog",
+	// 		"Greta",
+	// 		"5@ScopedCredentialInfo.dsf",
+	// 		"Hausstrasse 6",
+	// 		45632,
+	// 		"Hausenhasen",
+	// 		"+49121235454",
+	// 		new Date(3 - 7 - 2020),
+	// 		"female",
+	// 		"Hasen",
+	// 		"../../assets/puppy1.jpg"),
+	// 	new Child(
+	// 		3,
+	// 		"Baerbock",
+	// 		"Lasse",
+	// 		"1@ScopedCredentialInfo.dsf",
+	// 		"Hausstrasse 2",
+	// 		12345,
+	// 		"Hausenhasen",
+	// 		"+491235476874",
+	// 		new Date(3 - 4 - 2020),
+	// 		"male",
+	// 		"Igel",
+	// 		"../../../assets/crossfit.jpg")];
 
 
 	constructor(private http: HttpClient) { }
@@ -56,7 +56,11 @@ export class ChildService {
 	}
 
 	addChild(child: Child) {
-		this.http.post(this.url + "/children", child).subscribe;
+		console.log("addChild(): " + child.toString);
+		this.http.post(this.url + "/children", child)
+		.subscribe(response => {
+			console.log(response);
+		});
 	}
 
 	deleteChild(childId: number) {

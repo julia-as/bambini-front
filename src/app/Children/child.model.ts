@@ -5,16 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class Child {
 
-	public id: number = 1;
-	public lastName: string = "World";
-	public firstName: string = "Hello";
-	public email: string = "hello@world.org";
-	public street: string = "lifesaver street";
+	public id: number;
+	public lastName: string;
+	public firstName: string;
+	public email: string;
+	public street: string;
 	public zip: number;
-	public city: string = "Paradise";
-	public phone: string = "4840653410";
+	public city: string;
+	public phone: string;
 	public dob: Date;
-	public gender: string = "female";
+	public gender: string;
 	public group: string;
 	public imagePath: string;
 
@@ -30,7 +30,7 @@ export class Child {
 		dob?: Date,
 		gender?: string,
 		group?: string,
-		imagePath?: string,) {
+		imagePath?: string) {
 		this.id = id;
 		this.lastName = lastName;
 		this.firstName = firstName;
@@ -56,6 +56,7 @@ export class Child {
 			"Phone: " + this.phone + "\n" +
 			"DoB: " + this.dob + "\n" +
 			"Gender: " + this.gender + "\n" +
-			"Group: " + this.group);
+			"Group: " + this.group + "\n" +
+			"Image path: " + this.imagePath);
 	}
 }

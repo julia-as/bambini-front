@@ -29,11 +29,11 @@ export class NewChildComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.newChild = {};
   }
 
 
 // TODO: get chosen group value into NgForm
+// TODO: updload picture from file system via upload button
 onSubmit(form: NgForm) {
   this.newChild = new Child(
     this.generateNewId(),
@@ -46,8 +46,7 @@ onSubmit(form: NgForm) {
     form.value.childData.phone,
     form.value.childData.dob,
     form.value.childData.gender,
-    form.value.childData.groups,
-    "imagePath");
+    form.value.childData.groups);
   this.childService.addChild(this.newChild);
   console.log("new child:" + this.newChild.toString());
   this.submitted = true;
