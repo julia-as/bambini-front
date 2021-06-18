@@ -1,10 +1,15 @@
 import { Child } from '../Children/child.model';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
+
+// Annotation @Injectable() is needed as soon as a service uses another service (here: HttpService)
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class ChildService {
+
+	url = 'http://localhost:8080/';
 
 	children: Child[] = [
 		new Child(
@@ -34,8 +39,24 @@ export class ChildService {
 			"Igel",
 			"../../../assets/crossfit.jpg")];
 
-	addChild(child: Child) {
 
+	constructor(private http: HttpClient) { }
+
+	getAllChildren() {
+		return this.http.get<Child[]>(this.url + "/children");
+		// .subscribe(response => {
+		// 	this.children.push;
+		// 	console.log(response)});
+	}
+
+	getChild(id) {
+		return this.http.get<Child>(this.url + "/child/" + id)
+		.subscribe(response =>
+			console.log(response));
+	}
+
+	addChild(child: Child) {
+		this.http.post(this.url + "/children", child).subscribe;
 	}
 
 	deleteChild(childId: number) {

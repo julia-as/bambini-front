@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChild, Input } from '@angular/core';
 import { Child } from '../child.model';
 import { ChildService } from 'src/app/shared/child.service';
 
@@ -6,17 +6,17 @@ import { ChildService } from 'src/app/shared/child.service';
   selector: 'app-new-child-detail',
   templateUrl: './new-child-detail.component.html',
   styleUrls: ['./new-child-detail.component.css'],
-  providers: [ChildService, Child]
+  providers: []
 })
 export class NewChildDetailComponent implements OnInit {
 
-  child: Child;
+  @Input() child: Child;
 
-  constructor(child: Child) {
-    this.child = child;
+  constructor() {
    }
 
   ngOnInit(): void {
   }
+
 
 }

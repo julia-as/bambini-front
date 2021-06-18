@@ -16,7 +16,13 @@ export class ChildListComponent implements OnInit {
   constructor(private childService: ChildService) { }
 
   ngOnInit(): void {
-    this.children = this.childService.children;
+    // this.children = this.childService.children;
+        this.childService.getAllChildren()
+          .subscribe(response => {
+            response.forEach(element => {
+              this.children.push(element)
+            });
+            });
   }
 
 
