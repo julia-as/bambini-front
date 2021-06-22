@@ -12,6 +12,7 @@ export class ChildListComponent implements OnInit {
 
    public showInputField: Boolean = false;
    children: Child[] = [];
+   clicked = false;
    
   constructor(private childService: ChildService) { }
 
@@ -32,5 +33,9 @@ export class ChildListComponent implements OnInit {
 
   getColour() {
     return this.showInputField === false ? 'lightBlue' : 'lightGrey';
+  }
+
+  onClicked() {
+    this.clicked = true;
   }
 }

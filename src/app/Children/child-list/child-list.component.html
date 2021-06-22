@@ -12,7 +12,11 @@
 <div *ngFor="let child of children">
 	<div class="row">
 		<div class="col-xs-12">
-			<a class="list-group-item clearfix" routerLink="/children/child.id">
+			<a class="list-group-item clearfix" (click)="onClicked()">
+				<p *ngIf="clicked">
+					<app-child-detail child="child"></app-child-detail>
+				</p>
+				<!-- <a class="list-group-item clearfix" href="children/{{child.id}}" child="child" (click)="onClicked()"></a> -->
 				<div class="pull-left">
 					<h4 class="list-group-item-heading">{{child.firstName}} {{child.lastName}}</h4>
 					<span class="pull-right">

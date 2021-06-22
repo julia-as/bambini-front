@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Child } from '../child.model';
-import { ChildService } from 'src/app/shared/child.service';
 
 @Component({
   selector: 'app-child-detail',
@@ -9,9 +8,9 @@ import { ChildService } from 'src/app/shared/child.service';
 })
 export class ChildDetailComponent implements OnInit {
 
-  child: Child;
+  @Input() child: Child;
 
-  constructor(private childService: ChildService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
