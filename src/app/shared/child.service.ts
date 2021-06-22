@@ -1,6 +1,7 @@
 import { Child } from '../Children/child.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 
 // Annotation @Injectable() is needed as soon as a service uses another service (here: HttpService)
@@ -10,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class ChildService {
 
 	url = 'http://localhost:8080';
+	private children: Child[];
+	childrenChanged: Child[];
 
 	// children: Child[] = [
 	// 	new Child(
@@ -42,33 +45,53 @@ export class ChildService {
 
 	constructor(private http: HttpClient) { }
 
-	getAllChildren() {
-		return this.http.get<Child[]>(this.url + "/children");
-		// .subscribe(response => {
-		// 	this.children.push;
-		// 	console.log(response)});
+
+	// Initially get all children from database
+	setAllChildren(children: Child[]) {
+		this.children = children;
+		// this.childrenChanged.next(this.children.slice();
 	}
 
-	getChild(id) {
-		return this.http.get<Child>(this.url + "/child/" + id)
+	getAllChildren() {
+		return this.http.get<Child[]>(this.url + "/children")
+			.pipe(
+				map(response => {
+					const childArray = [];
+					for (const id in childArray) {
+						childArray.push(response(id));
+					}
+					// return children.map(child => {
+					// ...children
+				});
+	});
+		)
+			.subscribe(children => {
+		this.setAllChildren(children);
+			});
+	}
+
+getChild(id) {
+	return this.http.get<Child>(this.url + "/child/" + id)
 		.subscribe(response =>
 			console.log(response));
-	}
+}
 
-	addChild(child: Child) {
-		console.log("addChild(): " + child.toString);
-		this.http.post(this.url + "/children", child)
-		.subscribe(response => {
-			console.log(response);
-		});
-	}
+addChild(child: Child) {
+	console.log("addChild(): " + child.toString);
+	this.http.post(this.url + "/children", child)
+		.pipe(
+			map((res: any) => {
+				res['playload'] = res;
+				return res['playload'];
+			}));
+}
 
-	deleteChild(childId: number) {
+deleteChild(childId: number) {
+	// this.childrenChanged.next(this.children.slice();
+}
 
-	}
-
-	updateChild(child: Child) {
-
-	}
+updateChild(child: Child) {
+	// this.childrenChanged.next(this.children.slice();
+}
 
 }

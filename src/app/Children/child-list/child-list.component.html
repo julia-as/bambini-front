@@ -1,22 +1,9 @@
-<!-- <p>
-	Children in this group are: <br>
-	{{firstName}} {{lastName}} <br>
-	{{dob}} <br>
-	{{email}}<br>
-	{{phone}} <br>
-	{{street}} <br>
-	{{zip}} {{city}} <br>
-	{{gender}} <br>
-</p> -->
 <h4>Children in this group are:</h4>
 <div *ngFor="let child of children">
 	<div class="row">
 		<div class="col-xs-12">
 			<a class="list-group-item clearfix" (click)="onClicked()">
-				<p *ngIf="clicked">
-					<app-child-detail child="child"></app-child-detail>
-				</p>
-				<!-- <a class="list-group-item clearfix" href="children/{{child.id}}" child="child" (click)="onClicked()"></a> -->
+				<a class="list-group-item clearfix" [routerLink]="['/children', child.id]"></a>
 				<div class="pull-left">
 					<h4 class="list-group-item-heading">{{child.firstName}} {{child.lastName}}</h4>
 					<span class="pull-right">
@@ -24,8 +11,28 @@
 							style="max-height: 50px;">
 					</span>
 				</div>
-
 			</a>
 		</div>
 	</div>
 </div>
+
+<!-- 
+<h4>Children in this group are:</h4>
+<div *ngIf="clicked">
+	<app-child-detail child="child" [child]="child"></app-child-detail>
+<div *ngFor="let child of children"></div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<a class="list-group-item clearfix" (click)="onClicked()">
+				<div class="pull-left">
+					<h4 class="list-group-item-heading">{{child.firstName}} {{child.lastName}}</h4>
+					<span class="pull-right">
+						<img [src]="child.imagePath" alt="{{child.firstName}} {{child.lastName}}" class="img-responsive"
+							style="max-height: 50px;">
+					</span>
+				</div>
+			</a>
+		</div>
+	</div>
+</div> -->

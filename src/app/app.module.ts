@@ -17,12 +17,14 @@ import { LoggingService } from './shared/logging.service';
 import { GroupService } from './shared/group.service';
 import { Child } from './Children/child.model';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'children', pathMatch: 'full' },
   { path: 'children', component: ChildListComponent },
   { path: 'children/:id', component: ChildDetailComponent },
   { path: 'newChild', component: NewChildComponent }
+  // { path: '*', component: NotFoundComponent }
 ];
 
 @NgModule({
@@ -33,6 +35,7 @@ const appRoutes: Routes = [
     ChildListComponent,
     ChildDetailComponent,
     NewChildDetailComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

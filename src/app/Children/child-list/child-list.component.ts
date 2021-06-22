@@ -10,24 +10,24 @@ import { ChildService } from '../../shared/child.service';
 })
 export class ChildListComponent implements OnInit {
 
-   public showInputField: Boolean = false;
-   children: Child[] = [];
-   clicked = false;
-   
+  public showInputField: Boolean = false;
+  children: Child[] = [];
+  clicked = false;
+
   constructor(private childService: ChildService) { }
 
   ngOnInit(): void {
     // this.children = this.childService.children;
-        this.childService.getAllChildren()
-          .subscribe(response => {
-            response.forEach(element => {
-              this.children.push(element)
-            });
-            });
+    this.childService.getAllChildren()
+      .subscribe(response => {
+        response.forEach(element => {
+          this.children.push(element)
+        });
+      });
   }
 
 
-    onNewChild() {
+  onNewChild() {
     this.showInputField = true;
   }
 
